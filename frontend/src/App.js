@@ -1,4 +1,4 @@
-import App from "./App";
+import "@/App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@/lib/ThemeProvider";
 import { Toaster } from "@/components/ui/sonner";
