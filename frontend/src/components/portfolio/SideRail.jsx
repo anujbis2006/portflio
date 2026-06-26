@@ -43,7 +43,7 @@ export default function SideRail() {
                         <span
                             className={`block rounded-full transition-all duration-300 ${
                                 isActive
-                                    ? "h-6 w-1.5 bg-foreground"
+                                    ? "h-6 w-1.5 bg-brand"
                                     : "h-1.5 w-1.5 bg-foreground/30 group-hover:bg-foreground/70"
                             }`}
                         />

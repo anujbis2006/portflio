@@ -27,6 +27,9 @@
         --input: 0 0% 92%;
         --ring: 0 0% 0%;
         --radius: 0.5rem;
+        /* Signal-mint accent (IDE-inspired). Refined on light backgrounds. */
+        --brand: 152 70% 38%;
+        --brand-foreground: 0 0% 100%;
     }
     .dark {
         --background: 0 0% 4%;
@@ -48,6 +51,9 @@
         --border: 0 0% 14%;
         --input: 0 0% 14%;
         --ring: 0 0% 100%;
+        /* Bright on dark — signal-mint. */
+        --brand: 148 92% 62%;
+        --brand-foreground: 0 0% 6%;
     }
 }
 
@@ -109,6 +115,21 @@
     .text-balance {
         text-wrap: balance;
     }
+    .text-brand {
+        color: hsl(var(--brand));
+    }
+    .bg-brand {
+        background-color: hsl(var(--brand));
+    }
+    .border-brand {
+        border-color: hsl(var(--brand));
+    }
+    .brand-glow {
+        box-shadow:
+            0 0 0 1px hsl(var(--brand) / 0.35),
+            0 0 24px -4px hsl(var(--brand) / 0.55),
+            0 0 60px -10px hsl(var(--brand) / 0.35);
+    }
     .grid-pattern {
         background-image: linear-gradient(
                 to right,
@@ -148,5 +169,57 @@
             hsl(var(--foreground) / 0.4),
             transparent
         );
+    }
+    @keyframes aurora-drift {
+        0%, 100% { transform: translate3d(0,0,0) scale(1); }
+        33% { transform: translate3d(4%, -3%, 0) scale(1.08); }
+        66% { transform: translate3d(-3%, 4%, 0) scale(0.95); }
+    }
+    .animate-aurora {
+        animation: aurora-drift 18s ease-in-out infinite;
+    }
+    @keyframes shine-sweep {
+        0% { transform: translateX(-120%) skewX(-20deg); }
+        100% { transform: translateX(220%) skewX(-20deg); }
+    }
+    .group:hover .shine-on-hover {
+        animation: shine-sweep 1.1s ease-out;
+    }
+    @keyframes brand-pulse {
+        0%, 100% { box-shadow: 0 0 0 0 hsl(var(--brand) / 0.45); }
+        50% { box-shadow: 0 0 0 12px hsl(var(--brand) / 0); }
+    }
+    .animate-brand-pulse {
+        animation: brand-pulse 2.6s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+    @keyframes border-rotate {
+        to { --angle: 360deg; }
+    }
+    .brand-conic-border {
+        position: relative;
+    }
+    .brand-conic-border::before {
+        content: "";
+        position: absolute;
+        inset: -1px;
+        border-radius: inherit;
+        padding: 1px;
+        background: conic-gradient(
+            from var(--angle, 0deg),
+            transparent 0deg,
+            hsl(var(--brand)) 60deg,
+            transparent 140deg,
+            transparent 360deg
+        );
+        -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        animation: border-rotate 6s linear infinite;
+        pointer-events: none;
+    }
+    @property --angle {
+        syntax: "<angle>";
+        initial-value: 0deg;
+        inherits: false;
     }
 }

@@ -3,6 +3,14 @@ import { motion, useMotionValue, useMotionTemplate } from "framer-motion";
 import { ArrowRight, MapPin, ArrowDown } from "lucide-react";
 import { profile } from "@/data/portfolio";
 import { TID } from "@/lib/testIds";
+import RotatingText from "./RotatingText";
+
+const ROTATING_ROLES = [
+    "Backend Engineer",
+    "AI / ML Builder",
+    "RAG Systems",
+    "FastAPI · LLMs",
+];
 
 export default function Hero() {
     const ref = useRef(null);
@@ -36,12 +44,22 @@ export default function Hero() {
                 style={{ background: spotlight }}
                 className="absolute inset-0 pointer-events-none transition-opacity"
             />
+            {/* Animated aurora blob — brand-tinted */}
             <div
                 aria-hidden
-                className="absolute -top-40 right-[-10%] w-[60rem] h-[60rem] rounded-full pointer-events-none opacity-30 dark:opacity-20"
+                className="absolute -top-40 right-[-10%] w-[60rem] h-[60rem] rounded-full pointer-events-none opacity-40 dark:opacity-50 animate-aurora blur-3xl"
                 style={{
                     background:
-                        "radial-gradient(closest-side, hsl(var(--foreground) / 0.18), transparent 70%)",
+                        "radial-gradient(closest-side, hsl(var(--brand) / 0.35), transparent 70%)",
+                }}
+            />
+            <div
+                aria-hidden
+                className="absolute -bottom-32 left-[-15%] w-[50rem] h-[50rem] rounded-full pointer-events-none opacity-30 dark:opacity-30 animate-aurora blur-3xl"
+                style={{
+                    background:
+                        "radial-gradient(closest-side, hsl(var(--foreground) / 0.25), transparent 70%)",
+                    animationDelay: "-9s",
                 }}
             />
 
@@ -50,11 +68,11 @@ export default function Hero() {
                     initial={{ opacity: 0, y: 12 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5 }}
-                    className="inline-flex items-center gap-3 rounded-full border border-border bg-card/40 backdrop-blur px-3.5 py-1.5 font-mono text-[10px] sm:text-xs tracking-[0.2em] uppercase text-muted-foreground"
+                    className="inline-flex items-center gap-3 rounded-full border border-brand/40 bg-brand/10 backdrop-blur px-3.5 py-1.5 font-mono text-[10px] sm:text-xs tracking-[0.2em] uppercase text-brand"
                 >
-                    <span className="relative flex h-2 w-2">
-                        <span className="absolute inset-0 rounded-full bg-emerald-500 animate-ping opacity-60" />
-                        <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+                    <span className="relative flex h-2 w-2 animate-brand-pulse rounded-full">
+                        <span className="absolute inset-0 rounded-full bg-brand animate-ping opacity-60" />
+                        <span className="relative inline-flex h-2 w-2 rounded-full bg-brand" />
                     </span>
                     <span data-testid={TID.heroAvailability}>
                         {profile.available
@@ -92,9 +110,10 @@ export default function Hero() {
                             transition={{ duration: 0.6, delay: 0.15 }}
                             className="text-xl sm:text-2xl font-heading font-medium text-balance leading-snug"
                         >
-                            {profile.headline}{" "}
+                            Building as a{" "}
+                            <RotatingText words={ROTATING_ROLES} />
                             <span className="text-muted-foreground">
-                                — BTech CS + AI @ NSIT Dwarka.
+                                {" "}— BTech CS + AI @ NSIT Dwarka.
                             </span>
                         </motion.p>
 
