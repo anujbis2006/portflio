@@ -18,6 +18,7 @@ export default function Education() {
                     index="06"
                     label="Education"
                     title="Where I'm learning the fundamentals."
+                    subhead="Building a strong academic foundation."
                 />
 
                 <div className="space-y-4">

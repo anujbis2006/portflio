@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Menu, X, Moon, Sun } from "lucide-react";
+import { Menu, X, Moon, Sun, Download } from "lucide-react";
 import { useTheme } from "@/lib/ThemeProvider";
 import { navLinks, profile } from "@/data/portfolio";
 import { TID } from "@/lib/testIds";
@@ -31,11 +31,9 @@ export default function Navbar() {
                 <a
                     href="#top"
                     data-testid={TID.navBrand}
-                    className="font-heading font-extrabold tracking-tight text-lg flex items-center gap-2"
+                    className="font-serif italic font-medium text-2xl tracking-tight text-foreground hover:text-brand transition-colors"
                 >
-                    <span className="inline-block h-2 w-2 rounded-full bg-foreground" />
-                    {profile.firstName}
-                    <span className="text-muted-foreground">.</span>
+                    {profile.firstName} {profile.lastName}
                 </a>
 
                 <nav className="hidden md:flex items-center gap-8">
@@ -52,6 +50,16 @@ export default function Navbar() {
                 </nav>
 
                 <div className="flex items-center gap-2">
+                    <a
+                        href={profile.resumeUrl}
+                        download
+                        data-testid="nav-resume-link"
+                        className="hidden sm:inline-flex items-center gap-2 rounded-full border border-brand/40 bg-brand/10 px-3.5 py-1.5 text-xs font-medium text-brand hover:bg-brand/20 transition-colors"
+                    >
+                        Resume
+                        <Download className="h-3.5 w-3.5" />
+                    </a>
+
                     <button
                         data-testid={TID.themeToggle}
                         onClick={toggle}
@@ -87,15 +95,22 @@ export default function Navbar() {
                             <a
                                 key={l.href}
                                 href={l.href}
-                                data-testid={TID.mobileMenuLink(
-                                    l.label.toLowerCase()
-                                )}
+                                data-testid={TID.mobileMenuLink(l.label.toLowerCase())}
                                 onClick={() => setOpen(false)}
                                 className="py-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
                             >
                                 {l.label}
                             </a>
                         ))}
+                        <a
+                            href={profile.resumeUrl}
+                            download
+                            onClick={() => setOpen(false)}
+                            className="mt-2 inline-flex items-center justify-between rounded-full border border-brand/40 bg-brand/10 px-4 py-2 text-sm font-medium text-brand"
+                        >
+                            Resume
+                            <Download className="h-4 w-4" />
+                        </a>
                     </nav>
                 </div>
             )}

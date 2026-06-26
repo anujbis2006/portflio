@@ -44,6 +44,7 @@ export default function Roadmap() {
                     index="04"
                     label="Learning roadmap · interactive"
                     title="The sequential path I'm walking."
+                    subhead="Phase by phase, skill by skill."
                     description="My target role is AI Engineer / Backend SDE. This is the order I'm learning these skills — and why each phase has to come before the next. Tap any skill to mark it done; your progress saves in your browser."
                 />
 

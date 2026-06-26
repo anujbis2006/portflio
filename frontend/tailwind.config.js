@@ -8,6 +8,7 @@ module.exports = {
                 heading: ["'Cabinet Grotesk'", "ui-sans-serif", "system-ui", "sans-serif"],
                 body: ["'Satoshi'", "ui-sans-serif", "system-ui", "sans-serif"],
                 mono: ["'JetBrains Mono'", "ui-monospace", "SFMono-Regular", "monospace"],
+                serif: ["'Fraunces'", "'Cormorant Garamond'", "ui-serif", "Georgia", "serif"],
             },
             borderRadius: {
                 lg: "var(--radius)",

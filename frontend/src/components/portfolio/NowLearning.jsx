@@ -18,6 +18,7 @@ export default function NowLearning() {
                     index="03"
                     label="Now / Currently Building"
                     title="Going deeper into LLMs and AI systems."
+                    subhead="Theory, papers, and shipped systems."
                     description={nowLearning.intro}
                 />
 

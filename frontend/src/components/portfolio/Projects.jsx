@@ -128,6 +128,7 @@ export default function Projects() {
                     index="05"
                     label="Selected work"
                     title="Projects I've shipped (and ones I'm shipping now)."
+                    subhead="Engineering AI systems from the ground up."
                     description="Each project below was built end-to-end — from idea and architecture to working code."
                 />
 

@@ -76,6 +76,7 @@ export default function Contact() {
                     index="09"
                     label="Contact"
                     title="Let's build something."
+                    subhead="Internships, collaborations, real conversations."
                     description="Reach out for internships, collaborations, or just a good conversation about AI and systems."
                 />
 

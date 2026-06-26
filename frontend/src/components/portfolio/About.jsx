@@ -23,6 +23,7 @@ export default function About() {
                     index="01"
                     label="About"
                     title="A short version of who I am."
+                    subhead="Building practical AI, shipping real systems."
                 />
 
                 <div className="grid lg:grid-cols-12 gap-10 lg:gap-16">

@@ -88,18 +88,20 @@ export default function Hero() {
                     transition={{ duration: 0.6, delay: 0.05 }}
                     className="mt-6 font-heading font-extrabold tracking-[-0.045em] leading-[0.92] text-balance text-5xl sm:text-7xl lg:text-[8rem]"
                 >
-                    {profile.firstName}
-                    <br />
-                    <span
-                        className="bg-clip-text text-transparent"
-                        style={{
-                            backgroundImage:
-                                "linear-gradient(180deg, hsl(var(--muted-foreground)), hsl(var(--foreground) / 0.2))",
-                        }}
-                    >
+                    {profile.firstName}{" "}
+                    <span className="font-serif italic font-medium text-brand">
                         {profile.lastName}.
                     </span>
                 </motion.h1>
+
+                <motion.p
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.1 }}
+                    className="mt-4 font-mono text-sm sm:text-base uppercase tracking-[0.3em] text-muted-foreground"
+                >
+                    AI · ML · Backend · Systems
+                </motion.p>
 
                 <div className="mt-8 grid lg:grid-cols-12 gap-8 items-end">
                     <div className="lg:col-span-7">
