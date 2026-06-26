@@ -3,6 +3,7 @@ import { CheckCircle2, Circle, Sparkles } from "lucide-react";
 import { roadmap } from "@/data/portfolio";
 import useRoadmapProgress from "@/lib/useRoadmapProgress";
 import SectionHeader from "./SectionHeader";
+import SpotlightCard from "./SpotlightCard";
 
 const statusStyle = {
     Done: {
@@ -71,7 +72,7 @@ export default function Roadmap() {
                                         <Icon className="h-4 w-4" />
                                     </span>
 
-                                    <div
+                                    <SpotlightCard
                                         className={`relative rounded-2xl border ${
                                             isActive
                                                 ? "border-brand/40 brand-conic-border"
@@ -116,7 +117,7 @@ export default function Roadmap() {
                                                 {prog.completed}/{prog.total}
                                             </span>
                                         </div>
-                                    </div>
+                                    </SpotlightCard>
                                 </motion.li>
                             );
                         })}

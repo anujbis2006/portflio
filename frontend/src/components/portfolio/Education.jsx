@@ -3,6 +3,7 @@ import { GraduationCap } from "lucide-react";
 import { education } from "@/data/portfolio";
 import { TID } from "@/lib/testIds";
 import SectionHeader from "./SectionHeader";
+import SpotlightCard from "./SpotlightCard";
 
 const slug = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/-+$/, "");
 
@@ -30,11 +31,11 @@ export default function Education() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, margin: "-60px" }}
                             transition={{ duration: 0.5, delay: i * 0.06 }}
-                            className="rounded-2xl border border-border bg-card/40 backdrop-blur-sm p-6 sm:p-8"
                         >
+                            <SpotlightCard className="rounded-2xl border border-border bg-card/40 backdrop-blur-sm p-6 sm:p-8">
                             <div className="flex flex-col sm:flex-row sm:items-start gap-5 sm:gap-8">
                                 <div className="h-12 w-12 rounded-xl border border-border grid place-items-center bg-secondary/30 shrink-0">
-                                    <GraduationCap className="h-5 w-5" />
+                                    <GraduationCap className="h-5 w-5 text-brand" />
                                 </div>
                                 <div className="flex-1 min-w-0">
                                     <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-2">
@@ -67,6 +68,7 @@ export default function Education() {
                                     )}
                                 </div>
                             </div>
+                            </SpotlightCard>
                         </motion.div>
                     ))}
                 </div>

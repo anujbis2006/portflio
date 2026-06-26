@@ -3,6 +3,7 @@ import { Sparkles, BookOpen } from "lucide-react";
 import { nowLearning, reading } from "@/data/portfolio";
 import { TID } from "@/lib/testIds";
 import SectionHeader from "./SectionHeader";
+import SpotlightCard from "./SpotlightCard";
 
 const slug = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/-+$/, "");
 
@@ -31,11 +32,12 @@ export default function NowLearning() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, margin: "-60px" }}
                             transition={{ duration: 0.5, delay: i * 0.05 }}
-                            className="group relative rounded-2xl border border-border bg-card/40 backdrop-blur-sm p-6 sm:p-7 hover:-translate-y-0.5 hover:border-foreground/30 transition-all"
+                            className="h-full"
                         >
+                            <SpotlightCard className="rounded-2xl border border-border bg-card/40 backdrop-blur-sm p-6 sm:p-7 hover:border-brand/40 transition-all h-full">
                             <div className="flex items-start justify-between gap-4">
                                 <div className="h-10 w-10 rounded-lg border border-border grid place-items-center bg-secondary/30">
-                                    <Sparkles className="h-4 w-4" />
+                                    <Sparkles className="h-4 w-4 text-brand" />
                                 </div>
                                 <span className="font-mono text-[10px] uppercase tracking-widest px-2.5 py-1 rounded-full border border-border bg-secondary/50 text-muted-foreground whitespace-nowrap">
                                     {item.tag}
@@ -47,6 +49,7 @@ export default function NowLearning() {
                             <p className="mt-2 text-sm sm:text-base text-muted-foreground leading-relaxed">
                                 {item.description}
                             </p>
+                            </SpotlightCard>
                         </motion.div>
                     ))}
                 </div>

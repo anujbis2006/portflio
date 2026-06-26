@@ -10,6 +10,7 @@ import {
 import { skills } from "@/data/portfolio";
 import { TID } from "@/lib/testIds";
 import SectionHeader from "./SectionHeader";
+import SpotlightCard from "./SpotlightCard";
 
 const slug = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/-+$/, "");
 
@@ -57,8 +58,8 @@ export default function Skills() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true, margin: "-60px" }}
                                 transition={{ duration: 0.5, delay: idx * 0.05 }}
-                                className="group relative rounded-2xl border border-border bg-card/40 backdrop-blur-sm p-6 sm:p-7 hover:border-brand/40 transition-colors"
                             >
+                                <SpotlightCard className="rounded-2xl border border-border bg-card/40 backdrop-blur-sm p-6 sm:p-7 hover:border-brand/40 transition-colors h-full">
                                 <div className="flex items-center justify-between gap-3 font-mono text-[11px] tracking-widest text-muted-foreground">
                                     <span className="flex items-center gap-3">
                                         <span className="italic font-serif text-brand text-base not-italic-fallback">
@@ -89,6 +90,7 @@ export default function Skills() {
                                         </li>
                                     ))}
                                 </ul>
+                                </SpotlightCard>
                             </motion.div>
                         );
                     })}

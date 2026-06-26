@@ -3,6 +3,7 @@ import { CheckCircle2 } from "lucide-react";
 import { achievements } from "@/data/portfolio";
 import { TID } from "@/lib/testIds";
 import SectionHeader from "./SectionHeader";
+import SpotlightCard from "./SpotlightCard";
 
 const slug = (s) =>
     s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/-+$/, "").slice(0, 60);
@@ -30,17 +31,19 @@ export default function Achievements() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, margin: "-60px" }}
                             transition={{ duration: 0.5, delay: i * 0.05 }}
-                            className="flex items-start gap-4 rounded-2xl border border-border bg-card/40 backdrop-blur-sm p-6"
+                            className="h-full"
                         >
-                            <CheckCircle2 className="h-5 w-5 shrink-0 mt-0.5 text-foreground/80" />
-                            <div>
-                                <h3 className="font-heading font-medium text-base sm:text-lg tracking-tight">
-                                    {a.title}
-                                </h3>
-                                <p className="mt-1 text-sm text-muted-foreground leading-relaxed">
-                                    {a.detail}
-                                </p>
-                            </div>
+                            <SpotlightCard className="flex items-start gap-4 rounded-2xl border border-border bg-card/40 backdrop-blur-sm p-6 h-full">
+                                <CheckCircle2 className="h-5 w-5 shrink-0 mt-0.5 text-brand" />
+                                <div>
+                                    <h3 className="font-heading font-medium text-base sm:text-lg tracking-tight">
+                                        {a.title}
+                                    </h3>
+                                    <p className="mt-1 text-sm text-muted-foreground leading-relaxed">
+                                        {a.detail}
+                                    </p>
+                                </div>
+                            </SpotlightCard>
                         </motion.li>
                     ))}
                 </ul>

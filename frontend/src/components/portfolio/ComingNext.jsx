@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { comingNext } from "@/data/portfolio";
 import SectionHeader from "./SectionHeader";
+import SpotlightCard from "./SpotlightCard";
 
 const slug = (s) =>
     s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/-+$/, "");
@@ -23,26 +24,17 @@ export default function ComingNext() {
 
                 <div className="grid md:grid-cols-3 gap-4 sm:gap-6">
                     {comingNext.map((p, i) => (
-                        <motion.article
+                        <motion.div
                             key={p.title}
                             data-testid={`coming-card-${slug(p.title)}`}
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, margin: "-60px" }}
                             transition={{ duration: 0.5, delay: i * 0.08 }}
-                            className="group relative flex flex-col rounded-2xl border border-border bg-card/40 backdrop-blur-sm p-6 sm:p-7 hover:border-brand/40 hover:-translate-y-0.5 transition-all overflow-hidden"
+                            className="h-full"
                         >
-                            {/* corner glow */}
-                            <div
-                                aria-hidden
-                                className="absolute -top-24 -right-16 w-56 h-56 rounded-full opacity-0 group-hover:opacity-60 transition-opacity duration-500 blur-3xl pointer-events-none"
-                                style={{
-                                    background:
-                                        "radial-gradient(closest-side, hsl(var(--brand) / 0.4), transparent 70%)",
-                                }}
-                            />
-
-                            <div className="relative flex items-center justify-between gap-3 font-mono text-[10px] uppercase tracking-[0.25em]">
+                            <SpotlightCard as="article" radius={520} className="flex flex-col rounded-2xl border border-border bg-card/40 backdrop-blur-sm p-6 sm:p-7 hover:border-brand/40 hover:-translate-y-0.5 transition-all h-full">
+                            <div className="flex items-center justify-between gap-3 font-mono text-[10px] uppercase tracking-[0.25em]">
                                 <span className="inline-flex items-center gap-2 text-brand">
                                     <span className="relative flex h-1.5 w-1.5">
                                         <span className="absolute inset-0 rounded-full bg-brand animate-ping opacity-70" />
@@ -53,15 +45,15 @@ export default function ComingNext() {
                                 <span className="text-muted-foreground">{p.tag}</span>
                             </div>
 
-                            <h3 className="relative mt-8 font-serif italic font-medium text-2xl sm:text-[28px] leading-tight tracking-tight">
+                            <h3 className="mt-8 font-serif italic font-medium text-2xl sm:text-[28px] leading-tight tracking-tight">
                                 {p.title}
                             </h3>
 
-                            <p className="relative mt-6 text-sm sm:text-[15px] text-muted-foreground leading-relaxed flex-1">
+                            <p className="mt-6 text-sm sm:text-[15px] text-muted-foreground leading-relaxed flex-1">
                                 {p.description}
                             </p>
 
-                            <ul className="relative mt-8 flex flex-wrap gap-2">
+                            <ul className="mt-8 flex flex-wrap gap-2">
                                 {p.stack.map((s) => (
                                     <li
                                         key={s}
@@ -71,7 +63,8 @@ export default function ComingNext() {
                                     </li>
                                 ))}
                             </ul>
-                        </motion.article>
+                            </SpotlightCard>
+                        </motion.div>
                     ))}
                 </div>
             </div>
