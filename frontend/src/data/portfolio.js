@@ -105,50 +105,72 @@ export const nowLearning = {
     ],
 };
 
-// Year-by-year roadmap — easy to edit each semester.
+// Sequential, phase-based skill roadmap. Edit phases / skills any time.
+// Target role: AI Engineer / Backend SDE.
 export const roadmap = [
     {
-        year: "Year 1 — 2024",
+        phase: "Phase 01",
         title: "Foundations",
         status: "Done",
-        items: [
-            "Python, C++ and core CS fundamentals",
-            "Math for ML — linear algebra, probability, calculus",
-            "First ML models with scikit-learn and TensorFlow",
-            "Started competitive programming on LeetCode",
+        why: "Everything else is built on this. You can't write systems if you can't write code, version it, and reason about what a computer is actually doing.",
+        parallel:
+            "Python + Git can be learned together from day one. CS Fundamentals run alongside in college. DSA starts only after you're fluent in basic Python.",
+        skills: [
+            { name: "Python Programming", level: "Core", strict: true },
+            { name: "Git & Version Control", level: "Core", parallel: true },
+            { name: "CS Fundamentals — OS · CN · DBMS · OOP", level: "College", parallel: true },
+            { name: "Data Structures & Algorithms", level: "After Python", strict: true },
         ],
     },
     {
-        year: "Year 2 — 2025",
-        title: "Applied AI & shipping projects",
+        phase: "Phase 02",
+        title: "Core backend & data",
         status: "Done",
-        items: [
-            "Built CNN + LSTM multimodal classifier",
-            "FastAPI backends powering ML models",
-            "First production RAG project with vector DBs",
-            "Crossed 300+ DSA problems",
+        why: "Real software lives on top of databases and APIs. Before going deep into AI, you need to be able to ship a working server that talks to a DB. This is what makes you employable, not just academically prepared.",
+        parallel:
+            "SQL and Backend Dev are tightly coupled — learn them together. Docker comes in once your backend works locally.",
+        skills: [
+            { name: "SQL & Databases", level: "Foundational", strict: true },
+            { name: "Backend Dev — FastAPI / Django / Node", level: "Core", strict: true },
+            { name: "Docker & Containers", level: "After first backend", parallel: true },
         ],
     },
     {
-        year: "Year 3 — 2026",
-        title: "Going deep on LLMs & systems",
+        phase: "Phase 03",
+        title: "AI specialization",
         status: "Now",
-        items: [
-            "Reading & reproducing AI research papers",
-            "LLM fine-tuning with LoRA / PEFT on open models",
-            "Studying transformer internals & inference optimisation",
-            "Targeting serious AI / SDE internships",
+        why: "This is the actual target. Without Phase 1 and 2, AI feels like magic and breaks in production. With them, ML is just another module of a larger system you can debug.",
+        parallel:
+            "ML → Deep Learning is strictly sequential. GenAI / LLM Engineering needs both DL fundamentals and a working backend, so it's gated by Phase 2.",
+        skills: [
+            { name: "Machine Learning", level: "Core ML", strict: true },
+            { name: "Deep Learning", level: "After ML", strict: true },
+            { name: "GenAI & LLM Engineering", level: "After DL + Backend", strict: true },
         ],
     },
     {
-        year: "Year 4 — 2027+",
-        title: "Research-grade engineering",
+        phase: "Phase 04",
+        title: "Production & scale",
         status: "Next",
-        items: [
-            "Contribute to open-source LLM tooling",
-            "Ship one well-engineered AI product per quarter",
-            "Explore agentic systems & evaluation frameworks",
-            "Full-time AI / ML / SDE roles",
+        why: "Now you stop being someone who builds toys and start being someone who ships. Cloud, system design and MLOps are what separate a student project from real infrastructure.",
+        parallel:
+            "Cloud and Docker pair naturally. System Design is a long, ongoing study — start early, keep going. MLOps comes last because it needs all of the above.",
+        skills: [
+            { name: "Cloud — AWS / GCP / Azure", level: "Pick one, go deep", parallel: true },
+            { name: "System Design", level: "Ongoing study", parallel: true },
+            { name: "MLOps", level: "After AI + Cloud", strict: true },
+        ],
+    },
+    {
+        phase: "Phase 05",
+        title: "Job-ready",
+        status: "Next",
+        why: "Skills are necessary but not sufficient. A polished portfolio proves you can ship; interview prep makes sure you can communicate what you've built and solve problems on the spot.",
+        parallel:
+            "Portfolio and Interview Prep run in parallel for at least 2–3 months before applications. Each project should be one you can actually defend.",
+        skills: [
+            { name: "Project Portfolio Strength", level: "Ongoing", parallel: true },
+            { name: "Interview Preparation", level: "Final 3 months", parallel: true },
         ],
     },
 ];
