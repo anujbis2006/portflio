@@ -64,34 +64,102 @@ export const skills = [
 
 export const nowLearning = {
     intro:
-        "I treat my portfolio as a working lab notebook. Here's what's currently on my desk:",
+        "I treat my portfolio as a working lab notebook. Entering my 3rd year, I'm going deeper than just using models — I'm learning how they actually work and how to build them.",
     items: [
+        {
+            title: "LLM training & fine-tuning",
+            description:
+                "Going beyond API calls — learning how transformers train, tokenization internals, LoRA / PEFT, and instruction tuning on small open models.",
+            tag: "Going deep",
+        },
+        {
+            title: "Reading AI research papers",
+            description:
+                "Working through foundational and current papers (Attention Is All You Need, RAG, LoRA, FlashAttention) and learning to extract ideas from arXiv weekly.",
+            tag: "Weekly habit",
+        },
+        {
+            title: "How AI systems actually work",
+            description:
+                "End-to-end ML systems: data pipelines, model serving, inference optimisation, caching, evals, and monitoring in production.",
+            tag: "Systems thinking",
+        },
         {
             title: "Advanced RAG architectures",
             description:
-                "Hybrid retrieval, reranking, and structured outputs over real codebases.",
+                "Hybrid retrieval, reranking, structured outputs, agentic flows, and grounding strategies for real codebases and documents.",
             tag: "In progress",
         },
         {
-            title: "Hugging Face model integration",
+            title: "Backend & distributed systems",
             description:
-                "Embedding pipelines (BAAI) and self-hosted inference without paid APIs.",
-            tag: "Building",
-        },
-        {
-            title: "Backend systems with FastAPI",
-            description:
-                "Designing clean, typed ML-powered APIs ready for production deployment.",
+                "Designing typed, scalable FastAPI services — queues, async workers, caching, and the foundations behind production AI infra.",
             tag: "Sharpening",
         },
         {
-            title: "DSA mastery",
+            title: "DSA & problem solving",
             description:
-                "Graphs, DP, trees, heaps, and sliding window — continuing the LeetCode grind.",
+                "Continuing the LeetCode grind across graphs, DP, trees, heaps, and contest-style problem solving.",
             tag: "Ongoing",
         },
     ],
 };
+
+// Year-by-year roadmap — easy to edit each semester.
+export const roadmap = [
+    {
+        year: "Year 1 — 2024",
+        title: "Foundations",
+        status: "Done",
+        items: [
+            "Python, C++ and core CS fundamentals",
+            "Math for ML — linear algebra, probability, calculus",
+            "First ML models with scikit-learn and TensorFlow",
+            "Started competitive programming on LeetCode",
+        ],
+    },
+    {
+        year: "Year 2 — 2025",
+        title: "Applied AI & shipping projects",
+        status: "Done",
+        items: [
+            "Built CNN + LSTM multimodal classifier",
+            "FastAPI backends powering ML models",
+            "First production RAG project with vector DBs",
+            "Crossed 300+ DSA problems",
+        ],
+    },
+    {
+        year: "Year 3 — 2026",
+        title: "Going deep on LLMs & systems",
+        status: "Now",
+        items: [
+            "Reading & reproducing AI research papers",
+            "LLM fine-tuning with LoRA / PEFT on open models",
+            "Studying transformer internals & inference optimisation",
+            "Targeting serious AI / SDE internships",
+        ],
+    },
+    {
+        year: "Year 4 — 2027+",
+        title: "Research-grade engineering",
+        status: "Next",
+        items: [
+            "Contribute to open-source LLM tooling",
+            "Ship one well-engineered AI product per quarter",
+            "Explore agentic systems & evaluation frameworks",
+            "Full-time AI / ML / SDE roles",
+        ],
+    },
+];
+
+export const reading = [
+    "Attention Is All You Need — Vaswani et al.",
+    "Retrieval-Augmented Generation for Knowledge-Intensive NLP",
+    "LoRA: Low-Rank Adaptation of Large Language Models",
+    "FlashAttention — fast & memory-efficient exact attention",
+    "Chain-of-Thought Prompting Elicits Reasoning",
+];
 
 export const projects = [
     {
@@ -177,8 +245,9 @@ export const achievements = [
 ];
 
 export const futureGoals = [
-    "Land a serious AI / Backend internship where I can ship real systems.",
-    "Contribute to an open-source LLM tooling project.",
+    "Land a serious AI / Backend internship where I can ship real systems, not just train models in notebooks.",
+    "Reproduce one foundational LLM paper end-to-end — from architecture to training run.",
+    "Contribute to an open-source LLM tooling project (RAG, evals, or serving).",
     "Build one well-engineered AI product end-to-end every quarter.",
 ];
 
@@ -186,6 +255,7 @@ export const navLinks = [
     { label: "About", href: "#about" },
     { label: "Skills", href: "#skills" },
     { label: "Now", href: "#now" },
+    { label: "Roadmap", href: "#roadmap" },
     { label: "Projects", href: "#projects" },
     { label: "Education", href: "#education" },
     { label: "Contact", href: "#contact" },

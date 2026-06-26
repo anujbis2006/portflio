@@ -16,7 +16,7 @@ export default function Achievements() {
         >
             <div className="max-w-6xl mx-auto px-6 lg:px-8">
                 <SectionHeader
-                    index="06"
+                    index="07"
                     label="Highlights"
                     title="Things I'm proud of so far."
                 />

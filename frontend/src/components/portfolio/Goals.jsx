@@ -13,7 +13,7 @@ export default function Goals() {
         >
             <div className="max-w-6xl mx-auto px-6 lg:px-8">
                 <SectionHeader
-                    index="07"
+                    index="08"
                     label="Current focus"
                     title="What I'm aiming at next."
                 />

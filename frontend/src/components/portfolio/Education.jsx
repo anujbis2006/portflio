@@ -15,7 +15,7 @@ export default function Education() {
         >
             <div className="max-w-6xl mx-auto px-6 lg:px-8">
                 <SectionHeader
-                    index="05"
+                    index="06"
                     label="Education"
                     title="Where I'm learning the fundamentals."
                 />

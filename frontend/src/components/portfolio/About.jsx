@@ -2,6 +2,14 @@ import { motion } from "framer-motion";
 import { about } from "@/data/portfolio";
 import { TID } from "@/lib/testIds";
 import SectionHeader from "./SectionHeader";
+import AnimatedNumber from "./AnimatedNumber";
+
+const stats = [
+    { value: 300, suffix: "+", label: "DSA problems solved" },
+    { value: 3, suffix: "", label: "AI projects shipped" },
+    { value: 97, suffix: "%ile", label: "JEE Main" },
+    { value: 2028, suffix: "", label: "Graduating year" },
+];
 
 export default function About() {
     return (
@@ -64,6 +72,29 @@ export default function About() {
                         </div>
                     </motion.div>
                 </div>
+
+                {/* Stats row */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-60px" }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
+                    className="mt-14 grid grid-cols-2 md:grid-cols-4 gap-px bg-border rounded-2xl overflow-hidden border border-border"
+                >
+                    {stats.map((s) => (
+                        <div
+                            key={s.label}
+                            className="bg-background p-6 sm:p-8 group hover:bg-secondary/40 transition-colors"
+                        >
+                            <div className="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-tight">
+                                <AnimatedNumber value={s.value} suffix={s.suffix} />
+                            </div>
+                            <div className="mt-2 font-mono text-[10px] sm:text-xs uppercase tracking-widest text-muted-foreground">
+                                {s.label}
+                            </div>
+                        </div>
+                    ))}
+                </motion.div>
             </div>
         </section>
     );

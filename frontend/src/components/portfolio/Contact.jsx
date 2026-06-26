@@ -73,7 +73,7 @@ export default function Contact() {
         >
             <div className="max-w-6xl mx-auto px-6 lg:px-8">
                 <SectionHeader
-                    index="08"
+                    index="09"
                     label="Contact"
                     title="Let's build something."
                     description="Reach out for internships, collaborations, or just a good conversation about AI and systems."
