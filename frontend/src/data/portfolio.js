@@ -273,6 +273,34 @@ export const futureGoals = [
     "Build one well-engineered AI product end-to-end every quarter.",
 ];
 
+// "Currently building" / what's coming next — flagship projects in progress.
+export const comingNext = [
+    {
+        title: "LLM Fine-Tuning Lab",
+        tag: "ML-Heavy",
+        status: "In progress",
+        description:
+            "Fine-tuning small open-source LLMs with LoRA + PEFT for a domain-specific reasoning task, plus a lightweight eval harness to measure quality before and after.",
+        stack: ["LoRA", "PEFT", "PyTorch", "Hugging Face"],
+    },
+    {
+        title: "Production-Grade RAG System",
+        tag: "Balanced ML/AI",
+        status: "In progress",
+        description:
+            "Advanced RAG pipeline with hybrid retrieval, cross-encoder reranking, and a RAGAS-style evaluation harness — designed to be deployable and observable, not just a notebook demo.",
+        stack: ["Hybrid Retrieval", "Reranking", "FastAPI", "ChromaDB"],
+    },
+    {
+        title: "Multi-Agent LangGraph App",
+        tag: "AI-Heavy",
+        status: "In progress",
+        description:
+            "Agentic system orchestrating specialised LLM agents with tool integration via Model Context Protocol (MCP), with live cloud deployment as the deliverable.",
+        stack: ["LangGraph", "MCP", "Agentic Workflow", "Docker"],
+    },
+];
+
 export const navLinks = [
     { label: "About", href: "#about" },
     { label: "Skills", href: "#skills" },

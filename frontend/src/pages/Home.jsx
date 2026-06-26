@@ -9,6 +9,7 @@ import Projects from "@/components/portfolio/Projects";
 import Education from "@/components/portfolio/Education";
 import Achievements from "@/components/portfolio/Achievements";
 import Goals from "@/components/portfolio/Goals";
+import ComingNext from "@/components/portfolio/ComingNext";
 import Contact from "@/components/portfolio/Contact";
 import Footer from "@/components/portfolio/Footer";
 import ScrollProgress from "@/components/portfolio/ScrollProgress";
@@ -34,6 +35,7 @@ export default function Home() {
                 <Education />
                 <Achievements />
                 <Goals />
+                <ComingNext />
                 <Contact />
             </main>
             <Footer />

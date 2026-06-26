@@ -73,7 +73,7 @@ export default function Contact() {
         >
             <div className="max-w-6xl mx-auto px-6 lg:px-8">
                 <SectionHeader
-                    index="09"
+                    index="10"
                     label="Contact"
                     title="Let's build something."
                     subhead="Internships, collaborations, real conversations."
