@@ -1,15 +1,5 @@
-import { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
-import {
-    CheckCircle2,
-    Circle,
-    Sparkles,
-    Link2,
-    Layers,
-    RotateCcw,
-    Check,
-    ChevronDown,
-} from "lucide-react";
+import { motion } from "framer-motion";
+import { CheckCircle2, Circle, Sparkles } from "lucide-react";
 import { roadmap } from "@/data/portfolio";
 import useRoadmapProgress from "@/lib/useRoadmapProgress";
 import SectionHeader from "./SectionHeader";
@@ -33,8 +23,7 @@ const statusStyle = {
 };
 
 export default function Roadmap() {
-    const { isDone, toggle, reset, phaseProgress } = useRoadmapProgress(roadmap);
-    const [openPhase, setOpenPhase] = useState(null); // collapsed by default
+    const { phaseProgress } = useRoadmapProgress(roadmap);
 
     return (
         <section
@@ -45,35 +34,11 @@ export default function Roadmap() {
             <div className="max-w-6xl mx-auto px-6 lg:px-8">
                 <SectionHeader
                     index="04"
-                    label="Learning roadmap · interactive"
+                    label="Learning roadmap"
                     title="The sequential path I'm walking."
                     subhead="Phase by phase, skill by skill."
-                    description="My target role is AI Engineer / Backend SDE. Tap a phase to expand its skills and details — your progress saves in your browser."
+                    description="My target role is AI Engineer / Backend SDE — a high-level view of where I am in the journey."
                 />
-
-                <div className="mb-10 flex flex-wrap items-center gap-x-6 gap-y-3 font-mono text-[10px] uppercase tracking-[0.25em]">
-                    <span className="inline-flex items-center gap-2 text-muted-foreground">
-                        <Link2 className="h-3.5 w-3.5" />
-                        Strict order
-                    </span>
-                    <span className="inline-flex items-center gap-2 text-muted-foreground">
-                        <Layers className="h-3.5 w-3.5" />
-                        Can run in parallel
-                    </span>
-                    <span className="inline-flex items-center gap-2 text-brand">
-                        <Check className="h-3.5 w-3.5" />
-                        Tap to mark done
-                    </span>
-                    <button
-                        type="button"
-                        onClick={reset}
-                        data-testid="roadmap-reset-btn"
-                        className="ml-auto inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
-                    >
-                        <RotateCcw className="h-3.5 w-3.5" />
-                        Reset progress
-                    </button>
-                </div>
 
                 <ol className="relative">
                     <span
@@ -87,7 +52,6 @@ export default function Roadmap() {
                             const Icon = s.icon;
                             const prog = phaseProgress(phase);
                             const isActive = phase.status === "Now";
-                            const isOpen = openPhase === i;
 
                             return (
                                 <motion.li
@@ -112,179 +76,46 @@ export default function Roadmap() {
                                             isActive
                                                 ? "border-brand/40 brand-conic-border"
                                                 : "border-border"
-                                        } bg-card/40 backdrop-blur-sm transition-colors overflow-hidden`}
+                                        } bg-card/40 backdrop-blur-sm p-6 sm:p-7`}
                                     >
-                                        {/* Collapsed header — always visible */}
-                                        <button
-                                            type="button"
-                                            onClick={() =>
-                                                setOpenPhase(isOpen ? null : i)
-                                            }
-                                            aria-expanded={isOpen}
-                                            data-testid={`roadmap-toggle-${i}`}
-                                            className="w-full text-left p-6 sm:p-7 flex flex-col gap-4 hover:bg-secondary/30 transition-colors"
-                                        >
-                                            <div className="flex flex-wrap items-start justify-between gap-3">
-                                                <div className="min-w-0">
-                                                    <div className="font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
-                                                        {phase.phase}
-                                                    </div>
-                                                    <h3
-                                                        className={`mt-1 font-heading font-semibold text-xl sm:text-2xl tracking-tight ${
-                                                            isActive ? "text-brand" : ""
-                                                        }`}
-                                                    >
-                                                        {phase.title}
-                                                    </h3>
+                                        <div className="flex flex-wrap items-start justify-between gap-3">
+                                            <div className="min-w-0">
+                                                <div className="font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
+                                                    {phase.phase}
                                                 </div>
-                                                <div className="flex items-center gap-3 shrink-0">
-                                                    <span
-                                                        className={`font-mono text-[10px] uppercase tracking-widest px-2.5 py-1 rounded-full border ${s.chip}`}
-                                                    >
-                                                        {phase.status}
-                                                    </span>
-                                                    <span
-                                                        className={`grid place-items-center h-7 w-7 rounded-full border border-border text-muted-foreground transition-transform ${
-                                                            isOpen ? "rotate-180 text-foreground border-foreground/30" : ""
-                                                        }`}
-                                                    >
-                                                        <ChevronDown className="h-4 w-4" />
-                                                    </span>
-                                                </div>
-                                            </div>
-
-                                            <div className="flex items-center gap-3">
-                                                <div className="relative flex-1 h-1.5 rounded-full bg-secondary/60 overflow-hidden">
-                                                    <motion.div
-                                                        initial={{ width: 0 }}
-                                                        animate={{
-                                                            width: `${prog.ratio * 100}%`,
-                                                        }}
-                                                        transition={{
-                                                            duration: 0.6,
-                                                            ease: "easeOut",
-                                                        }}
-                                                        className="absolute inset-y-0 left-0 rounded-full bg-brand"
-                                                    />
-                                                </div>
-                                                <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground tabular-nums">
-                                                    {prog.completed}/{prog.total}
-                                                </span>
-                                            </div>
-                                        </button>
-
-                                        {/* Expandable detail */}
-                                        <AnimatePresence initial={false}>
-                                            {isOpen && (
-                                                <motion.div
-                                                    key="content"
-                                                    initial={{ height: 0, opacity: 0 }}
-                                                    animate={{ height: "auto", opacity: 1 }}
-                                                    exit={{ height: 0, opacity: 0 }}
-                                                    transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                                                    className="overflow-hidden"
+                                                <h3
+                                                    className={`mt-1 font-heading font-semibold text-xl sm:text-2xl tracking-tight ${
+                                                        isActive ? "text-brand" : ""
+                                                    }`}
                                                 >
-                                                    <div className="px-6 sm:px-7 pb-6 sm:pb-7 border-t border-border pt-5">
-                                                        <p className="text-sm sm:text-[15px] text-foreground/85 leading-relaxed">
-                                                            <span className="text-muted-foreground font-mono text-[10px] uppercase tracking-widest mr-2">
-                                                                Why
-                                                            </span>
-                                                            {phase.why}
-                                                        </p>
+                                                    {phase.title}
+                                                </h3>
+                                            </div>
+                                            <span
+                                                className={`font-mono text-[10px] uppercase tracking-widest px-2.5 py-1 rounded-full border ${s.chip}`}
+                                            >
+                                                {phase.status}
+                                            </span>
+                                        </div>
 
-                                                        <ul className="mt-6 space-y-2.5">
-                                                            {phase.skills.map((sk) => {
-                                                                const done = isDone(
-                                                                    phase.phase,
-                                                                    sk.name
-                                                                );
-                                                                return (
-                                                                    <li key={sk.name}>
-                                                                        <button
-                                                                            type="button"
-                                                                            onClick={() =>
-                                                                                toggle(
-                                                                                    phase.phase,
-                                                                                    sk.name
-                                                                                )
-                                                                            }
-                                                                            data-testid={`skill-toggle-${i}-${sk.name
-                                                                                .toLowerCase()
-                                                                                .replace(
-                                                                                    /[^a-z0-9]+/g,
-                                                                                    "-"
-                                                                                )
-                                                                                .replace(
-                                                                                    /-+$/,
-                                                                                    ""
-                                                                                )}`}
-                                                                            aria-pressed={done}
-                                                                            className={`group/skill w-full flex flex-wrap items-center justify-between gap-3 rounded-xl border px-4 py-3 text-left transition-all ${
-                                                                                done
-                                                                                    ? "border-brand/50 bg-brand/10"
-                                                                                    : "border-border bg-background/40 hover:border-foreground/30"
-                                                                            }`}
-                                                                        >
-                                                                            <div className="flex items-center gap-3 min-w-0">
-                                                                                <span
-                                                                                    className={`shrink-0 grid place-items-center h-5 w-5 rounded-md border transition-all ${
-                                                                                        done
-                                                                                            ? "border-brand bg-brand text-[color:hsl(var(--brand-foreground))]"
-                                                                                            : "border-border bg-background group-hover/skill:border-foreground/40"
-                                                                                    }`}
-                                                                                >
-                                                                                    {done && (
-                                                                                        <Check
-                                                                                            className="h-3.5 w-3.5"
-                                                                                            strokeWidth={3}
-                                                                                        />
-                                                                                    )}
-                                                                                </span>
-                                                                                <span
-                                                                                    className={`text-sm sm:text-base font-medium transition-colors ${
-                                                                                        done
-                                                                                            ? "text-foreground line-through decoration-brand/70 decoration-2"
-                                                                                            : "text-foreground/90"
-                                                                                    }`}
-                                                                                >
-                                                                                    {sk.name}
-                                                                                </span>
-                                                                            </div>
-                                                                            <div className="flex items-center gap-2 ml-auto">
-                                                                                <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground hidden sm:inline">
-                                                                                    {sk.level}
-                                                                                </span>
-                                                                                {sk.strict && (
-                                                                                    <span className="inline-flex items-center gap-1 font-mono text-[10px] uppercase tracking-widest px-2 py-0.5 rounded-full border border-foreground/30 text-foreground">
-                                                                                        <Link2 className="h-3 w-3" />
-                                                                                        Seq
-                                                                                    </span>
-                                                                                )}
-                                                                                {sk.parallel && (
-                                                                                    <span className="inline-flex items-center gap-1 font-mono text-[10px] uppercase tracking-widest px-2 py-0.5 rounded-full border border-border bg-secondary/50 text-muted-foreground">
-                                                                                        <Layers className="h-3 w-3" />
-                                                                                        Par
-                                                                                    </span>
-                                                                                )}
-                                                                            </div>
-                                                                        </button>
-                                                                    </li>
-                                                                );
-                                                            })}
-                                                        </ul>
-
-                                                        {phase.parallel && (
-                                                            <p className="mt-5 text-xs sm:text-sm text-muted-foreground leading-relaxed border-l-2 border-brand/40 pl-3">
-                                                                <span className="font-mono text-[10px] uppercase tracking-widest text-foreground/70 mr-2">
-                                                                    Order note
-                                                                </span>
-                                                                {phase.parallel}
-                                                            </p>
-                                                        )}
-                                                    </div>
-                                                </motion.div>
-                                            )}
-                                        </AnimatePresence>
+                                        <div className="mt-5 flex items-center gap-3">
+                                            <div className="relative flex-1 h-1.5 rounded-full bg-secondary/60 overflow-hidden">
+                                                <motion.div
+                                                    initial={{ width: 0 }}
+                                                    animate={{
+                                                        width: `${prog.ratio * 100}%`,
+                                                    }}
+                                                    transition={{
+                                                        duration: 0.6,
+                                                        ease: "easeOut",
+                                                    }}
+                                                    className="absolute inset-y-0 left-0 rounded-full bg-brand"
+                                                />
+                                            </div>
+                                            <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground tabular-nums">
+                                                {prog.completed}/{prog.total}
+                                            </span>
+                                        </div>
                                     </div>
                                 </motion.li>
                             );
