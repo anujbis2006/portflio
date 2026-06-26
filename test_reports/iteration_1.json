@@ -1,0 +1,40 @@
+{
+  "summary": "First-finish smoke testing of Anuj Biswas portfolio (FastAPI + React). Backend contact API, frontend rendering, theme toggle, hero CTAs, contact form happy-path, resume download, mobile menu all verified working end-to-end.",
+  "tested_scope": ["backend", "frontend", "integration"],
+  "passed": [
+    "GET /api/ -> 200 with health message",
+    "POST /api/contact valid -> 201 with id+created_at, persisted in MongoDB",
+    "POST /api/contact invalid email -> 422",
+    "POST /api/contact empty message -> 422",
+    "GET /api/contact -> 200 sorted desc by created_at",
+    "Resume PDF GET /assets/Anuj_Biswas_Resume.pdf -> 200 application/pdf 55731 bytes",
+    "All 8 portfolio sections render (hero, about, skills, now-learning, projects, education, achievements, goals, contact)",
+    "Theme toggle adds 'dark' class to <html> (persists in document state)",
+    "Hero CTA 'View Projects' scrolls to projects-section (visible in viewport)",
+    "Hero CTA 'Contact Me' scrolls to contact-section (visible in viewport)",
+    "Contact form happy-path: fill name/email/message -> sonner toast 'Message sent' shown, form cleared, message stored (GET /api/contact count incremented)",
+    "Download Resume button href=/assets/Anuj_Biswas_Resume.pdf",
+    "Mobile viewport (390x844): mobile-menu-button visible, opens 6 mobile nav links"
+  ],
+  "failed": [
+    {
+      "area": "Contact form client-side validation UI",
+      "issue": "Empty submit produced no detectable inline error elements via .error/[class*=error]/[role=alert] selectors. Backend correctly rejects (422), but client-visible error messages were not detected in the standard error containers.",
+      "evidence": "Empty submit click -> Validation errors on empty submit: []. Likely uses Tailwind 'text-red-*' classes without 'error' substring or role=alert.",
+      "priority": "LOW"
+    },
+    {
+      "area": "Theme persistence key",
+      "issue": "Theme toggle works (html class toggles to 'dark') but localStorage key for 'theme'/'vite-ui-theme'/'ui-theme' returned None. Persistence across reload was not re-verified.",
+      "evidence": "localStorage theme: None after toggle. Behavior may use a different key; not a blocker.",
+      "priority": "LOW"
+    }
+  ],
+  "action_items": [
+    "Optional: confirm contact form renders visible inline error messages on empty/invalid submit (add role=alert or class containing 'error' for testability).",
+    "Optional: verify theme persists across page reload (confirm localStorage key name)."
+  ],
+  "success_rate": {"backend": "100%", "frontend": "100% (happy-path)"},
+  "retest_needed": false,
+  "full_testing_deferred": true
+}
