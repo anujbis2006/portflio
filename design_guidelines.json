@@ -1,0 +1,147 @@
+{
+  "theme_strategy": "dark_and_light_mode",
+  "archetype": "Swiss & High-Contrast (Archetype 4) fused with Developer Luxury (Archetype 5)",
+  "design_philosophy": "Premium, authoritative, and clean. Minimalist developer portfolio style focusing on extreme typography, subtle micro-interactions, and refined glassmorphism. 'Clean beats flashy'.",
+  "colors": {
+    "dark": {
+      "background": "#0A0A0A",
+      "background_gradient": "bg-gradient-to-br from-[#111111] via-[#0A0A0A] to-[#050505]",
+      "surface": "rgba(255, 255, 255, 0.02)",
+      "surface_glass": "rgba(10, 10, 10, 0.6)",
+      "border": "rgba(255, 255, 255, 0.1)",
+      "text_primary": "#F9FAFB",
+      "text_secondary": "#9CA3AF",
+      "accent": "#FFFFFF",
+      "accent_hover": "#E5E7EB",
+      "primary_brand": "#FFFFFF"
+    },
+    "light": {
+      "background": "#F9FAFB",
+      "background_gradient": "bg-gradient-to-br from-[#FFFFFF] via-[#F9FAFB] to-[#F3F4F6]",
+      "surface": "#FFFFFF",
+      "surface_glass": "rgba(255, 255, 255, 0.7)",
+      "border": "rgba(0, 0, 0, 0.08)",
+      "text_primary": "#111827",
+      "text_secondary": "#4B5563",
+      "accent": "#000000",
+      "accent_hover": "#1F2937",
+      "primary_brand": "#000000"
+    }
+  },
+  "typography": {
+    "font_imports": [
+      "@import url('https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@800,500,300&f[]=satoshi@500,400&display=swap');",
+      "@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');"
+    ],
+    "families": {
+      "heading": "'Cabinet Grotesk', sans-serif",
+      "body": "'Satoshi', sans-serif",
+      "mono": "'JetBrains Mono', monospace"
+    },
+    "scale": {
+      "h1": "text-4xl sm:text-5xl lg:text-6xl font-heading font-extrabold tracking-tighter",
+      "h2": "text-2xl sm:text-3xl lg:text-4xl font-heading font-bold tracking-tight",
+      "h3": "text-xl sm:text-2xl font-heading font-medium tracking-tight",
+      "body": "text-base sm:text-lg font-body leading-relaxed",
+      "small_mono": "text-xs sm:text-sm font-mono tracking-widest uppercase"
+    }
+  },
+  "layout_and_spacing": {
+    "container": "max-w-5xl mx-auto px-6 lg:px-8",
+    "spacing_system": "Generous Spacing: Use py-24 or py-32 for section padding. Use gap-8 or gap-12 for grids.",
+    "grid_modes": {
+      "projects": "Bento Grid: grid-cols-1 md:grid-cols-2 gap-6 or gap-8",
+      "skills": "Flex wrap with gap-3, or grid-cols-2 md:grid-cols-4 gap-6",
+      "general": "Single-column narrative for About and Education"
+    }
+  },
+  "component_patterns": {
+    "cards": {
+      "description": "Refined Glassmorphism (Crystal Glass)",
+      "dark_mode": "bg-black/60 backdrop-blur-xl border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)]",
+      "light_mode": "bg-white/70 backdrop-blur-xl border border-black/5 shadow-sm",
+      "hover_state": "hover:-translate-y-1 hover:border-white/20 (dark) hover:border-black/15 (light) transition-all duration-300 ease-out"
+    },
+    "buttons": {
+      "primary": "Monochrome contrast. Dark: bg-white text-black hover:bg-gray-200. Light: bg-black text-white hover:bg-gray-800. rounded-md px-6 py-3 font-medium transition-colors",
+      "secondary": "bg-transparent border border-border hover:bg-surface rounded-md px-6 py-3 font-medium transition-colors"
+    },
+    "badges_tags": {
+      "style": "font-mono text-xs uppercase tracking-widest px-3 py-1.5 rounded-full border border-border bg-surface text-text_secondary"
+    },
+    "navigation": {
+      "style": "Sticky Crystal Glass header (z-50). backdrop-blur-xl bg-white/70 dark:bg-black/60 border-b border-border."
+    }
+  },
+  "motion_and_interactions": {
+    "entrance": "Staggered fade-up for lists and grids. Use Framer Motion (`initial={{ opacity: 0, y: 20 }}`).",
+    "hover": "Scale-[1.02] on interactive cards, subtle opacity shifts on links.",
+    "scroll": "Smooth scrolling (use lenis if possible, or scroll-behavior: smooth in CSS)."
+  },
+  "sections": [
+    {
+      "name": "Hero",
+      "content": "Name (Anuj Biswas), Headline (AI & Machine Learning Enthusiast | BTech CS+AI @ NSIT Dwarka).",
+      "design": "Extreme typography. Huge name. Mono font for the university/role label. Subtle radial background gradient. CTA buttons: 'View Projects' (primary), 'Contact Me' (secondary)."
+    },
+    {
+      "name": "About",
+      "content": "Brief bio emphasizing AI/ML focus, problem-solving, and passion for building systems.",
+      "design": "Large, readable text block (text-xl to text-2xl). Keep it clean and narrative-focused."
+    },
+    {
+      "name": "Skills",
+      "content": "Programming Languages, Frameworks & Libraries, Databases, Tools & Platforms, Soft Skills.",
+      "design": "Use clean minimalist badges or a structured grid. Avoid generic progress bars."
+    },
+    {
+      "name": "Now Learning / Currently Building",
+      "content": "Replaces Experience. Focus on RAG, advanced LLMs, or active learning goals.",
+      "design": "Timeline format or a distinct highlighted 'Active' card. Minimalist and forward-looking."
+    },
+    {
+      "name": "Projects",
+      "content": "Multimodal Fake News Detection, AI Resume Analyzer, GitHub Analyzer.",
+      "design": "Bento Grid cards. Prominent titles, tech stack badges, and GitHub/Live links."
+    },
+    {
+      "name": "Education",
+      "content": "BTech CS+AI at NSIT Dwarka (2024-2028), New Delhi.",
+      "design": "Clean timeline item. Right-aligned dates or structured rows."
+    },
+    {
+      "name": "Achievements",
+      "content": "LeetCode 300+, RAG projects, etc.",
+      "design": "Minimal list with icons (e.g., Lucide check-circle or trophy)."
+    },
+    {
+      "name": "Contact",
+      "content": "Contact form (Name, Email, Message), Email link, LinkedIn, GitHub, Download Resume CTA.",
+      "design": "Sleek, customized Shadcn form inputs. Big typography for email ('hello@...')."
+    }
+  ],
+  "media": {
+    "image_urls": [
+      {
+        "url": "https://images.unsplash.com/photo-1517241034903-9a4c3ab12f00",
+        "description": "Abstract wavy dark shapes. Can be used with low opacity (10-20%) as a fixed background texture in dark mode to avoid pure flat black.",
+        "category": "Hero/Background Texture"
+      },
+      {
+        "url": "https://images.pexels.com/photos/7230895/pexels-photo-7230895.jpeg",
+        "description": "Texture of contemporary building with geometric lines. Good for subtle abstract section backgrounds.",
+        "category": "Background Texture"
+      }
+    ],
+    "icons_strategy": "Use 'lucide-react' for minimal, clean UI icons (external links, github, linkedin, mail, download). Use uniform stroke-width (1.5 or 2)."
+  },
+  "instructions_to_main_agent": [
+    "DO NOT USE Inter font. Apply the provided Fontshare/Google Fonts imports in the global CSS.",
+    "Configure Tailwind with the exact font families (font-heading for Cabinet Grotesk, font-body for Satoshi, font-mono for JetBrains Mono).",
+    "Implement a robust Dark/Light mode toggle (using next-themes or manually via Tailwind 'dark' class).",
+    "Use Framer Motion for elegant, staggered entrance animations on all major sections.",
+    "Rely strictly on the provided resume content. Do not invent dates, companies, or metrics.",
+    "Add data-testid attributes to all interactive elements (buttons, links, form inputs) using kebab-case role-based names (e.g., data-testid='contact-submit-button').",
+    "Customize Shadcn components (if used) to match the premium, monochrome, glassmorphic aesthetic. Remove default blue focus rings and replace with black/white focus rings."
+  ]
+}
