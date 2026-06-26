@@ -1,8 +1,8 @@
-import "@/App.css";
+import App from "./App";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@/lib/ThemeProvider";
 import { Toaster } from "@/components/ui/sonner";
-import Home from "@/pages/Home";
+import Home from "./pages/Home";
 
 function App() {
     return (
