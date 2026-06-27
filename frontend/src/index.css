@@ -224,3 +224,14 @@
         inherits: false;
     }
 }
+/* --- Floating Branding Badge Removal --- */
+[data-testid*="badge"], 
+div[class*="badge"], 
+div[class*="ethernal"],
+div[class*="branding"],
+a[href*="ethernal"] {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+}
