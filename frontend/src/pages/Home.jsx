@@ -25,7 +25,7 @@ export default function Home() {
             <AmbientBackdrop />
             <ScrollProgress />
             <Navbar />
-            {/* <SideRail /> */}
+           
             <main>
                 <Hero />
                 <Marquee items={marqueeItems} speed={50} />
