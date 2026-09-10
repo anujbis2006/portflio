@@ -5,7 +5,7 @@ import SectionHeader from "./SectionHeader";
 import AnimatedNumber from "./AnimatedNumber";
 
 const stats = [
-    { value: 300, suffix: "+", label: "DSA problems solved" },
+    { value: 500, suffix: "+", label: "DSA problems solved" },
     { value: 3, suffix: "", label: "AI projects shipped" },
     { value: 97, suffix: "%ile", label: "JEE Main" },
     { value: 2028, suffix: "", label: "Graduating year" },
